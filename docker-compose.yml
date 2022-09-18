@@ -14,20 +14,13 @@ services:
     image: snibox/snibox:latest
     command: sh -c "rm -rf tmp/pids && ./bin/rails s -p 3000 -b '0.0.0.0'"
     environment:
-      DB_NAME: "${DB_NAME}"
-      DB_USER: "${DB_USER}"
-      DB_PASS: "${DB_PASS}"
-      DB_HOST: "${DB_HOST}"
-      DB_PORT: "${DB_PORT}"
-      FORCE_SSL: "${FORCE_SSL}"
-      MAILGUN_SMTP_PORT: "${MAILGUN_SMTP_PORT}"
-      MAILGUN_SMTP_SERVER: "${MAILGUN_SMTP_SERVER}"
-      MAILGUN_SMTP_LOGIN: "${MAILGUN_SMTP_LOGIN}"
-      MAILGUN_SMTP_PASSWORD: "${MAILGUN_SMTP_PASSWORD}"
-      MAILGUN_API_KEY: "${MAILGUN_API_KEY}"
-      MAILGUN_DOMAIN: "${MAILGUN_DOMAIN}"
-      MAILGUN_PUBLIC_KEY: "${MAILGUN_PUBLIC_KEY}"
-      SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
+      DB_NAME: "postgres"
+      DB_USER: "postgres"
+      DB_PASS: "MVPwu1314"
+      DB_HOST: "database"
+      DB_PORT: "5432"
+      FORCE_SSL: "false"
+      SECRET_KEY_BASE: "MVPwu1314"
     volumes:
       - static-files:/app/public
     depends_on:
@@ -35,6 +28,8 @@ services:
 
   database:
     image: postgres:10.7-alpine
+    environment:
+      POSTGRES_PASSWORD: MVPwu1314
     volumes:
       - pg-data:/var/lib/postgresql/data
 
